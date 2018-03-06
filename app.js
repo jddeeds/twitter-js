@@ -2,22 +2,19 @@ const express = require("express");
 const app = express();
 const nunjucks = require("nunjucks");
 const volleyball = require("volleyball");
+const routes = require('./routes');
+app.use('/', routes);
 app.set('view engine', "html")
 app.engine('html', nunjucks.render)
 nunjucks.configure("views", {noCache: true});
 
-let locals = {
-  title: "An example",
-  people: [
-    { name: "Frodo" },
-    { name: "Hermoine" },
-    { name: "Gandalf" },
-    { name: "Duplicate Dan"},
-    { name: "Party Pooper Pat"},
-    { name: "Jovial Joey"}
-  ],
-  paragraph: "this is our content yo"
-};
+
+
+
+
+
+
+
 // nunjucks.render("index.html", locals, (err, output) => {
 //   console.log(output);
 // });
@@ -37,14 +34,14 @@ let locals = {
 //   next();
 // });
 
-app.use((req, res, next) => {
-  console.log(req.method + " " + req.path);
-  let user = req.query.user
-  // console.log(locals.people)
-  locals.people.push({name: user})
-  res.render('index.html', locals)
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(req.method + " " + req.path);
+//   let user = req.query.user
+//   // console.log(locals.people)
+//   locals.people.push({name: user})
+//   res.render('index.html', locals)
+//   next();
+// });
 
 
 
